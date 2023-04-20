@@ -21,7 +21,7 @@
                 <th>Modificado</th>
             </tr>
         </thead>
-      
+      <tbody></tbody>
     </table>
 
 </div>
@@ -36,10 +36,21 @@
                     headers: { 'RequestVerificationToken': $('@Html.AntiForgeryToken()').val() }
                 },
                 columns:[
+                    { data: 'Id'},
                     { data: 'Name'},
                     { data: 'Value' },
-                    { data: 'Created' },
-                    { data: 'Modified'}
+                    { 
+                        data: 'Creado',
+                        render: function (data, type, row) {
+                        return data.toLocaleString('es-MX', 
+                        { day: '2-digit', month: '2-digit', year: 'numeric' });
+                    }
+                    },
+                    { data: 'Modificado',
+                        render: function (data, type, row) {
+                        return data.toLocaleString('es-MX', 
+                        { day: '2-digit', month: '2-digit', year: 'numeric' });
+                    }
                 ]
             });
         })
