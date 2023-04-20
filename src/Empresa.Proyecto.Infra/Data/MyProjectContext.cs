@@ -10,13 +10,20 @@ namespace Empresa.Proyecto.Infra.Data
         /// Constructor para DI
         /// </summary>
         /// <param name="options"></param>
+        
         public MyProjectContext(DbContextOptions<MyProjectContext> options) : base(options)
         {
             Seed();
         }
 
+        public MyProjectContext()
+        {
+            
+        }
+
         public DbSet<SimpleEntity> SimpleEntity => Set<SimpleEntity>();
         public DbSet<ComplexEntity> ComplexEntity => Set<ComplexEntity>();
+        public DbSet<NewEntity> NewEntity => Set<NewEntity>();
 
         protected override void OnModelCreating(ModelBuilder builder)
         {           
